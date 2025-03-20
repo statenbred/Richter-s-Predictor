@@ -1,0 +1,44 @@
+# **Process**
+
+## Data Collection & Preparation
+
+Gather relevant data (which is provided in competitions)
+Data cleaning (handling missing values, outliers)
+Data preprocessing (normalization, encoding)
+Dataset splitting (train/validation/test)
+
+
+## Exploratory Data Analysis
+
+Statistical analysis
+Visual exploration
+Pattern and relationship discovery
+
+
+## Feature Engineering
+
+Feature creation
+Feature selection
+Feature transformation
+
+
+##  Model Selection & Training
+
+Baseline models
+More complex models
+Hyperparameter tuning
+Cross-validation
+
+
+## Model Evaluation
+
+Performance metrics
+Validation strategies
+Error analysis
+
+
+## Model Interpretation
+
+Feature importance
+Partial dependence plots
+SHAP values for model explanation
