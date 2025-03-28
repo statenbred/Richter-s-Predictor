@@ -1,50 +1,54 @@
-# Earthquake Disaster Relief Non-Profit Website
+# Rebuilding Nepal
 
-## Overview
-This project is a **non-profit website** designed to provide disaster relief support during earthquakes. The website follows a **brown and teal style** to create a trustworthy and calming user experience. It aims to help affected individuals find assistance, connect with relief organizations, and facilitate donations for relief efforts.
+## **Project Goal**
+This project aimed to develop a model that predicts a building's structural integrity based on its damage classification.
 
-## Features
-- **Homepage**: Provides essential information about earthquake relief efforts.
-- **Donation Portal**: Securely accepts donations to support affected communities.
-- **Emergency Contact Page**: Displays key emergency contact numbers and response teams.
-- **Resource Hub**: Offers articles, safety guidelines, and preparedness tips.
-- **Volunteer Sign-Up**: Allows users to register as volunteers to assist in relief efforts.
-- **Machine Learning Model**: Predicts high-risk earthquake zones based on historical data to improve preparedness and response planning.
+## **Backstory**
+On April 25th, 2015, Nepal was struck by an earthquake with a 7.8 magnitude, impacting four different countries: Nepal, China, Bangladesh, and India. The earthquake claimed the lives of thousands, left over half a million people homeless, triggered landslides, and caused an avalanche that wound up claiming the lives of 200 people. 
 
+## **Impact by Numbers**
+- **People affected**: 8 million people were impacted by the earthquake.
+- **Death and injured toll**: Nearly 9000 dead and 22,000 people injured.
+- **Displacement numbers**: More than 600,000 people were displaced due to their homes being destroyed.
+- **Damage Assessment**: $7.1 billion in damages across four countries.
+- **Rebuilding Costs**: Estimated $10 billion across all four countries
 
-## Machine Learning Model Details
-- **Dataset**:
+## **Project Steps**
+
+- **EDA**:
   - Contains 62 anonymized features related to earthquake data, including seismic activity, geological conditions, and historical impact.
   - Features include numerical and categorical variables, some requiring scaling and encoding.
+  - Geographic location, damage grade, building structure types, building structure attributes, potential correlating features
     
 - **Preprocessing**:
   - Identified and handled missing values using imputation techniques.
   - Scaled numerical features for consistency.
   - Performed feature engineering and selection to enhance model performance.
-  - Split dataset into training and testing sets for evaluation.
+  - Split the dataset into training and testing sets for evaluation.
     
 - **Models Used**:
-  - **Baseline Model**: Decision Tree (used as a benchmark for performance comparison).
-  - **Optimized Model**: Random Forest (selected due to its high accuracy and ability to handle complex feature interactions).
-  - **Comparison Model**: Multinomial Logistic Regression (evaluated for interpretability and efficiency).
+  - **Baseline Model**: Random Forest (used as a benchmark for performance comparison).
+  - **Optimized Model**: Catboost Classifier (selected due to its high accuracy and ability to handle complex feature interactions).
     
 - **Evaluation Metrics**:
-  - **Accuracy**: Measures the overall correctness of the model.
-  - **Precision & Recall**: Evaluate the model’s ability to correctly identify high-risk areas.
-  - **F1-score**: Balances precision and recall for a comprehensive assessment.
-  - **Confusion Matrix**: Analyzes false positives and false negatives to understand model performance better.
+  - **Accuracy**: Random Forest - 66% baseline model and 71% refined model (massive overfitting). Catboost Classifier - 70% baseline model and 71% optimized model (no overfitting and very stable)
+  - **Precision & Recall**: Random Forest - .66 precision and .69 recall. Catboost Classifier - .71 precision and .61 recall (no overfitting).
+  - **F1-score**: Random Forest .66 and Catboost Classifier .71.
+  - **Confusion Matrix**: Both models identified Class 2 most accurately, misclassified Class 3 as Class 2 (nearly 6000 instances), and struggled to identify Class 1
     
 - **Results**:
-  - **Random Forest Model** outperformed other models, achieving the highest accuracy and generalization capability.
-  - **Logistic Regression** provided valuable interpretability but had lower predictive accuracy.
-  - Future model improvements could include ensemble learning and deep learning approaches.
+  - **Random Forest Model**: while the test accuracy was nearly identical to Catboost, the model wasn't very stable. The instability of the model alongside its inability to identify Classes 1 and 3 forced me to try a different model. 
+  - **Catboost Classifier**: stable model with more upside than Random Forest. More efficient model of the two, no pipeline or encoding needed to fit the model. Catboost Classifier has target encoding built into it. Learning rate showed the model made genuine predictions based on what it learned. Highest accuracy .714
+  - **Error Analysis**: identified which features the model relies heavily on, and the grouping of features that are causing the model to make erroneous predictions. With some more feature engineering and hyperparameter tuning, we can increase the model's ability to predict a building's structural integrity based on its damage classification.
 
-
-## Future Enhancements
-- **Real-time Earthquake Alert System**: Integrate API-based live earthquake alerts.
-- **Enhanced Model Performance**: Implement deep learning techniques to improve prediction accuracy.
-- **Accessibility & Multilingual Support**: Ensure inclusivity for global users.
-- **AI-Powered Chatbots**: Provide immediate disaster response assistance.
-- **Expanded Dataset**: Incorporate real-time seismic data to refine ML predictions.
+## **Recommendations**: 
+- **Model Investment**: use error analysis findings to target features that are causing misclassification, feature engineering, and tune hyperparameters.
+- **Structural Recommendations**:
+    - Prioritize retrofitting high-risk structures with reinforced concrete or concrete mortar brick
+    - Phase out mud mortar stone construction, especially in high-risk regions
+    - Use cement mortar brick for cost-effectiveness
+    - Implement structural assessment programs targeting mud, mud mortar stone buildings
+        - retrofit where possible
+        - propose cement mortar brick as replacements where retrofitting is not possible
 
 
